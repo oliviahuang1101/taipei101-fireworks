@@ -91,6 +91,9 @@ def build(mode):
   polys.append({'points':[[round(x,2),round(y,2)] for x,y in coords],'height':b['height'],'source':b['source']})
  return {'mode':mode,'cells':cells,'buildings':polys,'unknown':sum(b['height'] is None for b in buildings),'total':len(buildings)}
 
+# Initialize demo data for Gunicorn and local Python execution.
+DATA['current'] = build('demo')
+
 def current():return DATA['current']
 
 @app.route('/')
